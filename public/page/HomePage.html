@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just Do It Bot - Task Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .hero-section {
+        background-color: #007bff;
+        color: white;
+        padding: 50px 0;
+      }
+      .bot-link {
+        margin-top: 20px;
+      }
+      .feature-card {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+      <div class="container">
+        <h1 class="display-4">Welcome to Just Do It Bot</h1>
+        <p class="lead">
+          Your personal To-Do task manager bot that helps you manage daily tasks
+          and long-term goals efficiently.
+        </p>
+        <a
+          href="https://t.me/to_do_2024_bot"
+          class="btn btn-light btn-lg bot-link"
+          >Try the Bot Now!</a
+        >
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Features</h2>
+      <div class="row">
+        <!-- Feature 1 -->
+        <div class="col-md-4">
+          <div class="card feature-card">
+            <div class="card-body">
+              <h5 class="card-title">Task Management</h5>
+              <p class="card-text">
+                Easily create, update, and delete tasks with simple commands.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="col-md-4">
+          <div class="card feature-card">
+            <div class="card-body">
+              <h5 class="card-title">Track Deadlines</h5>
+              <p class="card-text">
+                Set expiry dates for your tasks and never miss a deadline.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="col-md-4">
+          <div class="card feature-card">
+            <div class="card-body">
+              <h5 class="card-title">Task Status</h5>
+              <p class="card-text">
+                Mark tasks as complete or pending and manage your workflow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Bot Commands</h2>
+      <pre class="bg-light p-4 rounded">
+<b>/help</b> - Command list
+<b>/myTasks</b> - Your Task List
+<b>/newTask "Task Name" "Description" expireDate</b> - Create New Task
+<b>Example:</b> /newTask "Task Name", "Task Description", 01-01-2025
+<b>Note:</b> Description is Optional. If you do not want to add description write just " "
+<b>/changeStatus ID</b> - Change task status
+<b>Example:</b> /changeStatus 1012
+<b>/deleteTask ID</b> - Delete Task
+<b>Example:</b> /deleteTask 1012
+        </pre>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+        <p>Just Do It Bot © 2024 | Made with ❤️ by <a href="https://www.linkedin.com/in/nagiyev-mahaddin-3395a72a0">Mahaddin Nagiyev</a></p>
+    </footer>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
