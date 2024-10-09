@@ -5,7 +5,7 @@ const sendStartMessage = async (ctx) => {
 <b>/newTask "Task Name" "Description" expireDate</b> - Create New Task
 <b>Example:</b> /newTask "Task Name", "Task Description", 01-01-2025
 <b>Note:</b> Description is Optional. If you do not want to add description write just " "\n
-<b>changeStatus ID</b> - Change task status
+<b>/changeStatus ID</b> - Change task status
 <b>Example: /changeStatus 1012</b>\n
 <b>/deleteTask ID</b> - Delete Task
 <b>Example: /deleteTask 1012</b>`;
