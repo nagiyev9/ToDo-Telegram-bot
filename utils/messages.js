@@ -12,4 +12,20 @@ If you do not want to add description use the second one`
     };
 };
 
-export default { missingData };
+const wrongCommand = async (ctx) => {
+    try {
+        await ctx.replyWithHTML('Wrong command! Please use <b>/help</b> to get the list of available commands.');
+    } catch (error) {
+        console.log(error);
+    };
+};
+
+const wrongText = async (ctx) => {
+    try {
+        await ctx.replyWithHTML('Unkown text! Please use <b>/help</b> to get the list of available commands.');
+    } catch (error) {
+        console.log(error);
+    };
+};
+
+export default { missingData, wrongCommand, wrongText };

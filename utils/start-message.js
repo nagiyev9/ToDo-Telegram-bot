@@ -14,7 +14,6 @@ const sendStartMessage = async (ctx) => {
         await ctx.reply(helperCommand, {
             parse_mode: 'HTML'
         });
-        console.log('Start message sent successfully');
     } catch (error) {
         console.error('Error sending message:', error);
     };

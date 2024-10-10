@@ -3,6 +3,9 @@ import taskService from "../services/task-service.js";
 import messages from "../utils/messages.js";
 import generateTaskID from "../utils/generate-task-id.js";
 
+// Valid Commands
+const validCommands = ["/start", "/help", "/myTasks", "/newTask", "/changeStatus", "/deleteTask"];
+
 // Get All User Tasks
 const getAllUserTask = async ctx => {
     const user = ctx.from.id;
@@ -132,4 +135,17 @@ const deleteTask = async ctx => {
     };
 };
 
-export default { getAllUserTask, setTask, changeStatus, deleteTask };
+// Check Command
+const checkCommand = async ctx => {
+    const command = ctx.message.text;
+
+    if (command.startsWith('/')) {
+        if (!validCommands.includes(command.split(' ')[0])) {
+            return await messages.wrongCommand(ctx);
+        };
+    } else {
+        return await messages.wrongText(ctx);
+    };
+};
+
+export default { getAllUserTask, setTask, changeStatus, deleteTask, checkCommand };

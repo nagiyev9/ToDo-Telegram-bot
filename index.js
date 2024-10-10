@@ -30,29 +30,40 @@ import taskController from "./controllers/task-controller.js";
 // Initialize Bot
 const bot = new Telegraf(process.env.TOKEN);
 
+// Middleware To Check Commands
+bot.use(async (ctx, next) => {
+    await taskController.checkCommand(ctx);
+    next();
+});
+
 // Start Command
 bot.start(async (ctx) => {
     await sendStartMessage(ctx);
 });
 
+// Help Command
 bot.command('help', async (ctx) => {
     await sendStartMessage(ctx);
 });
 
+// User's Tasks
 bot.command('myTasks', async (ctx) => {
     await taskController.getAllUserTask(ctx);
 });
 
+// Create New Task
 bot.command('newTask', async (ctx) => {
     await taskController.setTask(ctx);
     await taskController.getAllUserTask(ctx);
 });
 
+// Delete Task
 bot.command('deleteTask', async (ctx) => {
     await taskController.deleteTask(ctx);
     await taskController.getAllUserTask(ctx);
 });
 
+// Change Task Status
 bot.command('changeStatus', async (ctx) => {
     await taskController.changeStatus(ctx);
     await taskController.getAllUserTask(ctx);
