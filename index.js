@@ -54,19 +54,16 @@ bot.command('myTasks', async (ctx) => {
 // Create New Task
 bot.command('newTask', async (ctx) => {
     await taskController.setTask(ctx);
-    await taskController.getAllUserTask(ctx);
 });
 
 // Delete Task
 bot.command('deleteTask', async (ctx) => {
     await taskController.deleteTask(ctx);
-    await taskController.getAllUserTask(ctx);
 });
 
 // Change Task Status
 bot.command('changeStatus', async (ctx) => {
     await taskController.changeStatus(ctx);
-    await taskController.getAllUserTask(ctx);
 });
 
 // Launch Bot

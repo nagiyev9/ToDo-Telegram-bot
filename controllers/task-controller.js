@@ -14,7 +14,7 @@ const getAllUserTask = async ctx => {
 
         if (tasks.length === 0) {
             return ctx.replyWithHTML(`You do not have any tasks yet.`);
-        }
+        };
 
         const taskDetails = `
 <b>Tasks:</b>
@@ -48,33 +48,33 @@ const setTask = async ctx => {
 
     if (!match) {
         return ctx.replyWithHTML('Invalid command format. Please use the following format:\n/newTask "Task Name" "Description" 01-01-2025');
-    }
+    };
 
     const [, name, desc, expireDate] = match;
 
     try {
         if (!name || !expireDate) {
             return await messages.missingData(ctx);
-        }
+        };
 
         const checkExist = await taskService.getTaskByName(name);
 
         if (checkExist) {
             return ctx.replyWithHTML('This task already exists.');
-        }
+        };
 
         const [day, month, year] = expireDate.split('-');
 
         if (day.length !== 2 || month.length !== 2 || year.length !== 4) {
             return ctx.replyWithHTML('Invalid date format. Please try again.\nExample: 01-01-2025');
-        }
+        };
 
         const date = new Date(year, month - 1, day);
         const today = new Date();
 
         if (date <= today) {
             return ctx.replyWithHTML('You cannot set a past date!');
-        }
+        };
 
         const newTask = await taskService.setTask({
             taskID: generateTaskID.generateTaskID(),
@@ -85,6 +85,7 @@ const setTask = async ctx => {
         });
 
         ctx.replyWithHTML('Task added successfully.');
+        await getAllUserTask(ctx);
     } catch (error) {
         console.error('Error fetching tasks:', error);
         ctx.replyWithHTML('An error occurred while setting your tasks. Please try again later.');
@@ -107,6 +108,7 @@ const changeStatus = async ctx => {
 
         await taskService.changeStatus(taskID, checkExist.isCompleated ? false : true);
         ctx.replyWithHTML('Task status changed successfully.');
+        await getAllUserTask(ctx);
     } catch (error) {
         console.error('Error changing status:', error);
         ctx.replyWithHTML('An error occurred while changing your task status. Please try again later.');
@@ -129,6 +131,7 @@ const deleteTask = async ctx => {
 
         await taskService.deleteTask(taskID);
         ctx.replyWithHTML('Task deleted successfully.');
+        await getAllUserTask(ctx);
     } catch (error) {
         console.error('Error deleting task:', error);
         ctx.replyWithHTML('An error occurred while deleting your task. Please try again later.');
