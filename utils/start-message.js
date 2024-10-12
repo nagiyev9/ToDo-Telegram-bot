@@ -1,3 +1,5 @@
+import logger from "../middlewares/logger.js";
+
 const sendStartMessage = async (ctx) => {
     const helperCommand = `<b>Welcome to Just Do It Bot. I'm here to help you manage your tasks effectively with this To-Do Bot. Whether it's simple daily tasks or long-term goals, you can create, update, and track your to-dos easily. Let's get started on organizing your tasks!</b>\n
 <b>/help</b> - Command list
@@ -15,7 +17,7 @@ const sendStartMessage = async (ctx) => {
             parse_mode: 'HTML'
         });
     } catch (error) {
-        console.error('Error sending message:', error);
+        logger.error('Error sending message:', error);
     };
 };
 

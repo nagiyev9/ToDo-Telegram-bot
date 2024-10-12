@@ -25,7 +25,9 @@ app.get('/', (req, res) => {
 // Imports
 import connect from "./database/db.js";
 import sendStartMessage from "./utils/start-message.js";
+import messages from "./utils/messages.js"
 import taskController from "./controllers/task-controller.js";
+import logger from './middlewares/logger.js';
 
 // Initialize Bot
 const bot = new Telegraf(process.env.TOKEN);
@@ -35,6 +37,16 @@ bot.use(async (ctx, next) => {
     await taskController.checkCommand(ctx);
     next();
 });
+
+bot.use(async (ctx, next) => {
+    try {
+        next();
+    } catch (error) {
+        logger.error(err.message);
+        await messages.errorMessage(ctx);
+    }
+});
+
 
 // Start Command
 bot.start(async (ctx) => {
