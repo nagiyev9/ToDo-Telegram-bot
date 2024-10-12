@@ -51,7 +51,9 @@ To run this project locally, follow these steps:
       "dotenv": "^16.4.5",
       "express": "^4.21.1",
       "mongoose": "^8.7.0",
-      "telegraf": "^4.16.3"
+      "telegraf": "^4.16.3",
+      "winston": "^3.15.0",
+      "winston-mongodb": "^6.0.0"
    }
    ```
 
